@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public bool isAwake = false;
-    public Animator animator;
+    public EnemyAnimation anim;
     public GameObject player;
     public float moveSpeed;
     public float lightThreshold;
@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<EnemyAnimation>();
     }
 
     // Update is called once per frame
