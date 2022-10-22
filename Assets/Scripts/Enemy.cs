@@ -17,6 +17,11 @@ public class Enemy : MonoBehaviour
     // for targeted movement toward player
     private bool nearPlayer = false;
 
+    // for taking damage
+    public float health = 2.0f;
+    public float damagePerSecond = 1.0f;
+    private bool takingDamage = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,20 +32,29 @@ public class Enemy : MonoBehaviour
     {
         if (isAwake){
             Move();
+            if (takingDamage){
+                health -= damagePerSecond * Time.deltaTime;
+                if (health <= 0.0f){
+                    Destroy(this);
+                }
+            }
         }
     }
 
     public void WakeUp(){
         isAwake = true;
-        // change the sprite/animation
+        // TODO change the sprite/animation to awake
     }
 
     private void OnTriggerEnter2D(Collider2D other){
         Debug.Log("trigger");
-        if (other.tag == "light"){
+        if (other.tag == "light" && !isAwake){
             WakeUp();
         }
-        // remind playermove person to put a trigger area around the player
+        else if (other.tag == "light" && isAwake){
+            takingDamage = true;
+            // TODO change the animation to taking damage animation
+        }
         if (other.tag == "player"){
             nearPlayer = true;
             Debug.Log("near player");
@@ -52,13 +66,20 @@ public class Enemy : MonoBehaviour
             nearPlayer = false;
             Debug.Log("not near player");
         }
+        else if (other.tag == "light"){
+            takingDamage = false;
+            // TODO change the animation to awake
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col){
         Debug.Log("collision");
-        if (col.gameObject.tag == "player"){
+        if (col.gameObject.tag == "player" && isAwake){
 
-            //GameManager::GameOver();
+            //TODO GameManager::GameOver();
+        }
+        else if (col.gameObject.tag == "player" && !isAwake){
+            WakeUp();
         }
         if (col.gameObject.tag == "wall"){
             direction *= -1.0f;
