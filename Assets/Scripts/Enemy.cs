@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public GameObject player;
     public float moveSpeed;
+    public float lightThreshold;
     // controls the random movement
     public float maxMoveTime;
     public float minMoveTime;
@@ -20,7 +21,6 @@ public class Enemy : MonoBehaviour
     // for taking damage
     public float health = 2.0f;
     public float damagePerSecond = 1.0f;
-    private bool takingDamage = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +32,7 @@ public class Enemy : MonoBehaviour
     {
         if (isAwake){
             Move();
-            if (takingDamage){
-                health -= damagePerSecond * Time.deltaTime;
-                if (health <= 0.0f){
-                    Destroy(this);
-                }
-            }
+            
         }
     }
 
@@ -51,13 +46,19 @@ public class Enemy : MonoBehaviour
         if (other.tag == "light" && !isAwake){
             WakeUp();
         }
-        else if (other.tag == "light" && isAwake){
-            takingDamage = true;
-            // TODO change the animation to taking damage animation
-        }
         if (other.tag == "player"){
             nearPlayer = true;
             Debug.Log("near player");
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other){
+        if (other.tag == "light" && other.GetComponent<LightScript>().angle <= lightThreshold){
+            health -= Time.deltaTime * damagePerSecond;
+            if (health <= 0.0f){
+                // TODO play death animation if applicable
+                Destroy(this);
+            }
         }
     }
 
@@ -65,10 +66,6 @@ public class Enemy : MonoBehaviour
         if (other.tag == "player"){
             nearPlayer = false;
             Debug.Log("not near player");
-        }
-        else if (other.tag == "light"){
-            takingDamage = false;
-            // TODO change the animation to awake
         }
     }
 
