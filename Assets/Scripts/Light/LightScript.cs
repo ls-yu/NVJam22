@@ -27,8 +27,9 @@ public class LightScript : MonoBehaviour
         for(int i = 0; i < numOfRays; i++){
             float rayAngle = i * (angle / (numOfRays - 1));
             float effectiveAngle = rayAngle - (angle / 2);
+            effectiveAngle += transform.rotation.z;
             Vector2 relativeVector = new Vector2(Mathf.Cos(Mathf.Deg2Rad * effectiveAngle), Mathf.Sin(Mathf.Deg2Rad * effectiveAngle));
-            Vector2 absoluteVector = transform.TransformDirection(relativeVector);
+            Vector2 absoluteVector = relativeVector;
 
             // Cast a ray.
             RaycastHit2D hit = Physics2D.Raycast(transform.position, absoluteVector, distance: maxRange);
