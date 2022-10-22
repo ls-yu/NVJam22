@@ -12,7 +12,7 @@ public class LightTester : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position += (Vector3) new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * 3 * Time.deltaTime;
 

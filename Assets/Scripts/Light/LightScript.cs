@@ -27,9 +27,8 @@ public class LightScript : MonoBehaviour
         for(int i = 0; i < numOfRays; i++){
             float rayAngle = i * (angle / (numOfRays - 1));
             float effectiveAngle = rayAngle - (angle / 2);
-            effectiveAngle += transform.rotation.z;
-            Vector2 relativeVector = new Vector2(Mathf.Cos(Mathf.Deg2Rad * effectiveAngle), Mathf.Sin(Mathf.Deg2Rad * effectiveAngle));
-            Vector2 absoluteVector = relativeVector;
+            effectiveAngle += transform.eulerAngles.z;
+            Vector2 absoluteVector = new Vector2(Mathf.Cos(Mathf.Deg2Rad * effectiveAngle), Mathf.Sin(Mathf.Deg2Rad * effectiveAngle));
 
             // Cast a ray.
             RaycastHit2D hit = Physics2D.Raycast(transform.position, absoluteVector, distance: maxRange);
@@ -56,7 +55,7 @@ public class LightScript : MonoBehaviour
         
         List<Vector2> spritePoints = new List<Vector2>();
         foreach(Vector2 v in hitPoints){
-            spritePoints.Add(v - (Vector2)transform.position + spritePivot);
+            spritePoints.Add((Vector2)transform.InverseTransformVector(v - (Vector2)transform.position)  + spritePivot);
         }
         spritePoints.Add(spritePivot); // Function is dif with pivot/middle, plus add to transform to get world coordinates, so want to do inverse
 
@@ -76,7 +75,7 @@ public class LightScript : MonoBehaviour
         // Updating collider
         List<Vector2> colliderPoints = new List<Vector2>();
         foreach(Vector2 v in hitPoints){
-            colliderPoints.Add(v - (Vector2)transform.position);
+            colliderPoints.Add((Vector2)transform.InverseTransformVector(v - (Vector2)transform.position));
         }
         colliderPoints.Add(Vector2.zero); 
 
