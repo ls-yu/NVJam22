@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,7 +103,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: fox_attack_animsheet_0
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 26
+        width: 46
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b46fbf2e177d904aa1566ae010d4908
+      internalID: -1616729041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fox_attack_animsheet_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 26
+        width: 53
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d51e1688a489b42a1553a1d50dd8af
+      internalID: -1877414822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fox_attack_animsheet_5
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 26
+        width: 53
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5177743bd7f6d443befe35b962862a7
+      internalID: 504652711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fox_attack_animsheet_6
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 25
+        width: 54
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac43311c927a7a408eb5202a12123fa
+      internalID: 1389629196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fox_attack_animsheet_7
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 24
+        width: 54
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8f21f5d8735324ba2d42d28f969f77
+      internalID: -479782713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fox_attack_animsheet_8
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 26
+        width: 45
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c830b34736000db41b6f69703bf7cfc7
+      internalID: -1468985367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fox_attack_animsheet_9
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 26
+        width: 46
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f924bc70f7f8dec4fbff275d254071be
+      internalID: 499381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +261,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fox_attack_animsheet_3: -1877414822
+      fox_attack_animsheet_6: 1389629196
+      fox_attack_animsheet_7: -479782713
+      fox_attack_animsheet_8: -1468985367
+      fox_attack_animsheet_1: 25817167
+      fox_attack_animsheet_4: 150598409
+      fox_attack_animsheet_12: 1658933396
+      fox_attack_animsheet_11: -650748740
+      fox_attack_animsheet_0: -1616729041
+      fox_attack_animsheet_10: 279524096
+      fox_attack_animsheet_13: 1135679821
+      fox_attack_animsheet_5: 504652711
+      fox_attack_animsheet_9: 499381
+      fox_attack_animsheet_2: 1361712790
+      fox_attack_animsheet_14: 430969156
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
