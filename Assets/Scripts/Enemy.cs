@@ -35,29 +35,34 @@ public class Enemy : MonoBehaviour
         // change the sprite/animation
     }
 
-    private void OnTriggerEnter(Collider other){
+    private void OnTriggerEnter2D(Collider2D other){
+        Debug.Log("trigger");
         if (other.tag == "light"){
             WakeUp();
         }
         // remind playermove person to put a trigger area around the player
         if (other.tag == "player"){
             nearPlayer = true;
+            Debug.Log("near player");
         }
     }
 
-    private void OnTriggerExit(Collider other){
+    private void OnTriggerExit2D(Collider2D other){
         if (other.tag == "player"){
             nearPlayer = false;
+            Debug.Log("not near player");
         }
     }
 
-    private void OnCollisionEnter(Collision col){
+    private void OnCollisionEnter2D(Collision2D col){
+        Debug.Log("collision");
         if (col.gameObject.tag == "player"){
 
             //GameManager::GameOver();
         }
         if (col.gameObject.tag == "wall"){
             direction *= -1.0f;
+            Debug.Log(direction);
         }
     }
 
