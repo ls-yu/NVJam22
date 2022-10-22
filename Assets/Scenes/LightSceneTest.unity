@@ -1087,6 +1087,10 @@ PrefabInstance:
       propertyPath: numOfRays
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 7712322687933643711, guid: b3823e8c288ad9547b87f916c7b17629, type: 3}
+      propertyPath: debugDrawRays
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3823e8c288ad9547b87f916c7b17629, type: 3}
 --- !u!4 &1325627874 stripped
