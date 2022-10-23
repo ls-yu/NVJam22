@@ -40,4 +40,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Menu");
     }
 
+    public void IntroCutScenes(){
+        
+    }
+
 }
