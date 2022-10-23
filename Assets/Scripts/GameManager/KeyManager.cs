@@ -9,7 +9,6 @@ public class KeyManager
 
     static KeyManager()
     {
-        //0 will be ignored
         keyFound = new bool[4]; 
     }
 
@@ -20,6 +19,6 @@ public class KeyManager
 
     public static bool FoundAll()
     {
-        return keyFound[1] && keyFound[2] && keyFound[3];
+        return keyFound[0] && keyFound[1] && keyFound[2] && keyFound[3];
     }
 }

@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     // for taking damage
     public float health = 2.0f;
     public float damagePerSecond = 1.0f;
+    private bool takingDamage = false;
 
     //attack
     public float attackCooldown = 1.5f;
@@ -38,19 +39,11 @@ public class Enemy : MonoBehaviour
         if (isAwake){
             Move();
         }
-
-        //delete later, just debug purposes
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            WakeUp();
-        }
         
     }
 
     public void WakeUp(){
-        isAwake = true;
-        // TODO change the sprite/animation to awake
-        anim.WakeUpAnimation();
+        StartCoroutine(WakeSequence());
     }
 
     private void OnTriggerEnter2D(Collider2D other){
@@ -66,14 +59,20 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other){
         if (other.tag == "light" && other.GetComponent<LightScript>().angle <= lightThreshold){
+            if (!takingDamage){
+                takingDamage = true;
+                anim.TakeDamageAnimation();
+            }
             health -= Time.deltaTime * damagePerSecond;
             Debug.Log("taking damage");
             if (health <= 0.0f){
                 Debug.Log("death");
-                // TODO play death animation if applicable
                 anim.DeathAnimation();
                 StartCoroutine(DeathSequence());
             }
+        }
+        if (other.tag == "light" && other.GetComponent<LightScript>().angle > lightThreshold){
+            takingDamage = false;
         }
     }
 
@@ -82,17 +81,22 @@ public class Enemy : MonoBehaviour
             nearPlayer = false;
             Debug.Log("not near player");
         }
+        if (other.tag == "light"){
+            takingDamage = false;
+            anim.WakeUpAnimation();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col){
         Debug.Log("collision");
-        if (col.gameObject.tag == "player" && !isAwake){
+        if (col.gameObject.tag == "player" && isAwake){
             attackTimer = attackCooldown;
+            anim.AttackAnimation();
         }
         else if (col.gameObject.tag == "player" && !isAwake){
             WakeUp();
         }
-        if (col.gameObject.tag == "wall"){
+        else if (col.gameObject.tag == "wall"){
             direction *= -1.0f;
             Debug.Log(direction);
         }
@@ -145,5 +149,11 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
+    }
+
+    IEnumerator WakeSequence(){
+        yield return new WaitForSeconds(0.3f);
+        isAwake = true;
+        anim.WakeUpAnimation();
     }
 }

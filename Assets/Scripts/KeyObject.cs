@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyObject : MonoBehaviour
 {
-    GameObject itemDisplay;
+    public GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +19,22 @@ public class KeyObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.tag == "player"){
-            itemDisplay.GetComponent<ItemDisplay>().showItem(gameObject.name);
+            gameManager.GetComponent<ItemDisplay>().showItem(gameObject.name);
+            if (gameObject.name == "feet"){
+                KeyManager.FoundKey(0);
+            }
+            else if (gameObject.name == "flower"){
+                KeyManager.FoundKey(1);
+            }
+            else if (gameObject.name == "feather"){
+                KeyManager.FoundKey(2);
+            }
+            else if (gameObject.name == "urn"){
+                KeyManager.FoundKey(3);
+            }
+            Debug.Log(gameObject.name + " picked up");
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
-    }    
+    }
 
 }
