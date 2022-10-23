@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static KeyManager;
 
 public class KeyObject : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class KeyObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //KeyManager.FindAllDebug();
+        KeyManager.ResetKeys();
     }
 
     // Update is called once per frame
@@ -32,7 +34,6 @@ public class KeyObject : MonoBehaviour
             else if (gameObject.name == "urn"){
                 KeyManager.FoundKey(3);
             }
-            Debug.Log(gameObject.name + " picked up");
             gameObject.SetActive(false);
         }
     }

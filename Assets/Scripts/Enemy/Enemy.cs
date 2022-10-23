@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
 
     // for targeted movement toward player
     private bool nearPlayer = false;
-    public float runSpeed = 1.0f;
+    public float runSpeed = 0.7f;
+    private bool touchingLight = false;
 
     // for taking damage
     public float health = 2.0f;
@@ -49,6 +50,9 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         Debug.Log("trigger");
+        if (other.tag == "light"){
+            touchingLight = true;
+        }
         if (other.tag == "light" && !isAwake){
             WakeUp();
         }
@@ -84,6 +88,7 @@ public class Enemy : MonoBehaviour
         }
         if (other.tag == "light"){
             takingDamage = false;
+            touchingLight = false;
             anim.WakeUpAnimation();
         }
     }
@@ -119,7 +124,7 @@ public class Enemy : MonoBehaviour
 
     private void Move(){
         float speed;
-        if (nearPlayer){
+        if (nearPlayer || touchingLight){
             direction = Vector3.Normalize(player.transform.position - transform.position);
             direction.z = 0.0f;
             speed = runSpeed;
@@ -158,7 +163,7 @@ public class Enemy : MonoBehaviour
     }
 
     IEnumerator WakeSequence(){
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.8f);
         isAwake = true;
         anim.WakeUpAnimation();
     }
