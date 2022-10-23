@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     // for targeted movement toward player
     private bool nearPlayer = false;
+    public float runSpeed = 1.0f;
 
     // for taking damage
     public float health = 2.0f;
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
     private bool takingDamage = false;
 
     //attack
-    public float attackCooldown = 1.5f;
+    public float attackCooldown = 0.5f;
     public float attackTimer = 0.0f;
 
     // Start is called before the first frame update
@@ -96,7 +97,7 @@ public class Enemy : MonoBehaviour
         else if (col.gameObject.tag == "player" && !isAwake){
             WakeUp();
         }
-        else if (col.gameObject.tag == "wall"){
+        else if (col.gameObject.tag == "wall" || col.gameObject.tag == "fox"){
             direction *= -1.0f;
             Debug.Log(direction);
         }
@@ -109,17 +110,22 @@ public class Enemy : MonoBehaviour
             }
             attackTimer-=Time.deltaTime;
             if (attackTimer < 0.0f){
+                anim.AttackAnimation();
+                attackTimer = attackCooldown;
                 player.GetComponent<PlayerHealth>().TakeDamage(1);
             }
         }
     }
 
     private void Move(){
+        float speed;
         if (nearPlayer){
             direction = Vector3.Normalize(player.transform.position - transform.position);
             direction.z = 0.0f;
+            speed = runSpeed;
         }
         else{
+            speed = moveSpeed;
             moveTimer-= Time.deltaTime;
             if (moveTimer <= 0f){
                 moveTimer = Random.Range(minMoveTime, maxMoveTime);
@@ -142,7 +148,7 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * 180 / Mathf.PI;
         transform.rotation = Quaternion.Euler(0, 0, angle - 180);
 
-        transform.position += Time.deltaTime * moveSpeed * direction;
+        transform.position += Time.deltaTime * speed * direction;
     }
 
     IEnumerator DeathSequence()
