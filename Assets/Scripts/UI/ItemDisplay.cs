@@ -11,7 +11,7 @@ public class ItemDisplay : MonoBehaviour
     bool feather;
     bool urn;
 
-    public void showItem(String item)
+    public void showItem(string item)
     {
         switch(item)
         {
