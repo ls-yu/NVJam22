@@ -1062,6 +1062,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2586405739497114275}
     - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: wakeSound
+      value: 
+      objectReference: {fileID: 6853471934715241534, guid: 64c9e345cf79f0744a7be604de4e0797, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 322634311258378697, guid: 92f52cff23018744290d029aa7ad23a0, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
       propertyPath: lightThreshold
       value: 25
       objectReference: {fileID: 0}
@@ -1226,6 +1234,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2586405739497114275}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: wakeSound
+      value: 
+      objectReference: {fileID: 6853471934715241534, guid: 64c9e345cf79f0744a7be604de4e0797, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 322634311258378697, guid: 92f52cff23018744290d029aa7ad23a0, type: 3}
     - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
       propertyPath: lightThreshold
       value: 25
@@ -2027,7 +2043,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 33.500122, y: -293.96097}
+  m_AnchoredPosition: {x: 33.5, y: -293.96094}
   m_SizeDelta: {x: 75.32, y: 75.32}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &821120130
@@ -2875,7 +2891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 47.62195, y: -68}
+  m_AnchoredPosition: {x: 47.62207, y: -68}
   m_SizeDelta: {x: 75.32, y: 75.32}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1098119840
@@ -3488,6 +3504,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2586405739497114275}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: wakeSound
+      value: 
+      objectReference: {fileID: 6853471934715241534, guid: 64c9e345cf79f0744a7be604de4e0797, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 322634311258378697, guid: 92f52cff23018744290d029aa7ad23a0, type: 3}
     - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
       propertyPath: lightThreshold
       value: 25
@@ -8428,6 +8452,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2586405739497114275}
     - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: wakeSound
+      value: 
+      objectReference: {fileID: 6853471934715241534, guid: 64c9e345cf79f0744a7be604de4e0797, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 322634311258378697, guid: 92f52cff23018744290d029aa7ad23a0, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
       propertyPath: lightThreshold
       value: 25
       objectReference: {fileID: 0}
@@ -8863,6 +8895,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2586405739497114275}
     - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: wakeSound
+      value: 
+      objectReference: {fileID: 6853471934715241534, guid: 64c9e345cf79f0744a7be604de4e0797, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 322634311258378697, guid: 92f52cff23018744290d029aa7ad23a0, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
       propertyPath: lightThreshold
       value: 25
       objectReference: {fileID: 0}
@@ -9014,6 +9054,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2586405739497114275}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: wakeSound
+      value: 
+      objectReference: {fileID: 6853471934715241534, guid: 64c9e345cf79f0744a7be604de4e0797, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 322634311258378697, guid: 92f52cff23018744290d029aa7ad23a0, type: 3}
     - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
       propertyPath: lightThreshold
       value: 25
@@ -9361,6 +9409,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2586405739497114275}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: wakeSound
+      value: 
+      objectReference: {fileID: 6853471934715241534, guid: 64c9e345cf79f0744a7be604de4e0797, type: 3}
+    - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 322634311258378697, guid: 92f52cff23018744290d029aa7ad23a0, type: 3}
     - target: {fileID: 4901701651747593649, guid: bb7628daac2a460459d68e69f7cfbd23, type: 3}
       propertyPath: lightThreshold
       value: 25
@@ -9820,7 +9876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 30
-  maxRange: 25
+  maxRange: 15
   numOfRays: 300
   debugDrawRays: 0
 --- !u!60 &5252163422776168441

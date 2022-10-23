@@ -29,6 +29,9 @@ public class Enemy : MonoBehaviour
     public float attackCooldown = 0.5f;
     public float attackTimer = 0.0f;
 
+    public GameObject attackSound;
+    public GameObject wakeSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +101,7 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.tag == "player" && isAwake){
             attackTimer = attackCooldown;
             anim.AttackAnimation();
+            Instantiate(attackSound, transform);
         }
         else if (col.gameObject.tag == "player" && !isAwake){
             WakeUp();
@@ -118,6 +122,7 @@ public class Enemy : MonoBehaviour
                 anim.AttackAnimation();
                 attackTimer = attackCooldown;
                 player.GetComponent<PlayerHealth>().TakeDamage(1);
+                Instantiate(attackSound, transform);
             }
         }
     }
@@ -164,6 +169,9 @@ public class Enemy : MonoBehaviour
 
     IEnumerator WakeSequence(){
         yield return new WaitForSeconds(0.8f);
+        if(isAwake == false){
+            Instantiate(wakeSound, transform);
+        }
         isAwake = true;
         anim.WakeUpAnimation();
     }
