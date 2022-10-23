@@ -11,7 +11,7 @@ public class AudioPlayer : MonoBehaviour
 
     GameManager gm;
 
-    bool startedEndSong;
+    bool startedEndSong = false;
     bool startedLoopingEnd;
     bool finishedIntro;
 
@@ -19,13 +19,14 @@ public class AudioPlayer : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        audioSource.GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         audioSource.clip = gameClip;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(gm.gameEnded);
         if (gm.gameEnded)
         {
             if (!startedEndSong)
