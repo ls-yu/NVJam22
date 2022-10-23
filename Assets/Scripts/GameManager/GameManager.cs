@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour
 {
     public static event Action OnGameFinish;
 
-    [SerializeField]
     GameObject gameOverFailUI;
     GameOver goScript;
+    GameObject gameOverSuccessUI;
+    GameOverSuccess gosScript;
+
+    bool gameEnded;
 
     bool broadcastedGameFinish;
 
@@ -20,6 +23,11 @@ public class GameManager : MonoBehaviour
     {
         gameOverFailUI = GameObject.FindGameObjectWithTag("GameOver");
         goScript = gameOverFailUI.GetComponent<GameOver>();
+        gameOverSuccessUI = GameObject.FindGameObjectWithTag("GameOverSuccess");
+        gosScript = gameOverSuccessUI.GetComponent<GameOverSuccess>();
+
+        gameEnded = false;
+
         broadcastedGameFinish = false;   
     }
 
@@ -32,7 +40,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Game success");
                 broadcastedGameFinish = true;
-                StartCoroutine(GameWon());
+                GameWon();
             }
         }
     }
@@ -64,21 +72,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync("CreditsScene");
     }
 
-    IEnumerator GameWon(){
-        yield return new WaitForSeconds(0.3f);
-        // TODO play success sound
-        SceneManager.LoadSceneAsync("GameOverSuccess");
-    }
 
-    /*
     public void GameWon()
     {
-
+        if (!gameEnded)
+        {
+            gosScript.OnGameOver();
+            gameEnded = true;
+        }
     }
-    */
-
     public void GameLost()
     {
-        goScript.OnGameOver();
+        if (!gameEnded)
+        {
+            goScript.OnGameOver();
+            gameEnded = true;
+        }
     }
 }

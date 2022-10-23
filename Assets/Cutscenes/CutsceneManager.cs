@@ -44,7 +44,7 @@ public class CutsceneManager : MonoBehaviour
         }
 
         // Load menu
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("StartScreen", LoadSceneMode.Single);
     }
 
 

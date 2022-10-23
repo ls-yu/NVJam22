@@ -10,6 +10,7 @@ TagManager:
   - fox
   - GameOver
   - GameManager
+  - GameOverSuccess
   layers:
   - Default
   - TransparentFX

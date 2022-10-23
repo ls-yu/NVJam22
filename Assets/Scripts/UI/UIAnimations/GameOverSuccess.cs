@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOver : MonoBehaviour
+public class GameOverSuccess : MonoBehaviour
 {
-    Transform deadduck;
+    Transform item1, item2, item3, item4;
     Transform retryButton;
     Transform menuButton;
 
@@ -14,11 +14,16 @@ public class GameOver : MonoBehaviour
 
     void Start()
     {
-
-        deadduck = transform.Find("DeadDuck");
+        item1 = transform.Find("Item1");
+        item2 = transform.Find("Item2");
+        item3 = transform.Find("Item3");
+        item4 = transform.Find("Item4");
         retryButton = transform.Find("RetryButton");
         menuButton = transform.Find("MenuButton");
-        deadduck.gameObject.SetActive(false);
+        item1.gameObject.SetActive(false);
+        item2.gameObject.SetActive(false);
+        item3.gameObject.SetActive(false);
+        item4.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
         menuButton.gameObject.SetActive(false);
 
@@ -29,6 +34,7 @@ public class GameOver : MonoBehaviour
 
     void Update()
     {
+
         if (animationFinished)
         {
             retryButton.gameObject.SetActive(true);
@@ -36,7 +42,7 @@ public class GameOver : MonoBehaviour
         }
         else
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.ShowText"))
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.GameOverUISuccessEnd"))
             {
                 animationFinished = true;
             }
@@ -46,6 +52,9 @@ public class GameOver : MonoBehaviour
     public void OnGameOver()
     {
         anim.SetTrigger("GameOver");
-        deadduck.gameObject.SetActive(true);
+        item1.gameObject.SetActive(true);
+        item2.gameObject.SetActive(true);
+        item3.gameObject.SetActive(true);
+        item4.gameObject.SetActive(true);
     }
 }
