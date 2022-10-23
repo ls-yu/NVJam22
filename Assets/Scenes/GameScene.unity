@@ -7584,7 +7584,6 @@ PrefabInstance:
       value: GameReset
       objectReference: {fileID: 0}
     - target: {fileID: 2036215996539287135, guid: 6514897dc2f00974d9d4d1e1581e0778, type: 3}
-<<<<<<< HEAD
       propertyPath: m_AnchorMax.y
       value: 0.92
       objectReference: {fileID: 0}
@@ -7599,10 +7598,6 @@ PrefabInstance:
     - target: {fileID: 2036215996539287135, guid: 6514897dc2f00974d9d4d1e1581e0778, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.5
-=======
-      propertyPath: m_LocalScale.y
-      value: 1.1375
->>>>>>> d9ce7a75ebeff2457f25a23b9d35801e73dc16b5
       objectReference: {fileID: 0}
     - target: {fileID: 2036215997169850252, guid: 6514897dc2f00974d9d4d1e1581e0778, type: 3}
       propertyPath: m_Pivot.x
