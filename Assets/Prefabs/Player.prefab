@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2586405739397546464}
   m_Layer: 2
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,6 +140,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 5
+  flashlight: {fileID: 0}
+  maxAngle: 0
+  minAngle: 0
+  angleChangeSpeed: 0
 --- !u!331 &2586405739397546464
 SpriteMask:
   m_ObjectHideFlags: 0
