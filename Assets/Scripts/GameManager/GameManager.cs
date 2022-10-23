@@ -28,4 +28,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameReset()
+    {
+        Debug.Log("Reset");
+    }
+
+    public void GoToMenu()
+    {
+        Debug.Log("Menu");
+    }
+
 }
