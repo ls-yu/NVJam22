@@ -17,8 +17,14 @@ public class PlayerController : MonoBehaviour
     public float minAngle;
     public float angleChangeSpeed;
 
+    public float lightColorThreshhold;
+    public Color lowAngleLightColor;
+    public Color highAngleLightColor;
     bool isLightOff = false;
 
+
+    public GameObject turnOnSound;
+    public GameObject turnOffSound;
 
     void Start()
     {
@@ -43,13 +49,20 @@ public class PlayerController : MonoBehaviour
 
         lightScript.angle  = Mathf.Clamp(lightScript.angle, minAngle, maxAngle);
 
+        if(lightScript.angle < lightColorThreshhold){
+            flashlight.GetComponent<SpriteRenderer>().color = lowAngleLightColor;
+        } else {
+            flashlight.GetComponent<SpriteRenderer>().color = highAngleLightColor;
+        }
 
         // Light toggling
         if(Input.GetKeyDown(KeyCode.F)){
             if(isLightOff){
                 flashlight.SetActive(true);
+                Instantiate(turnOnSound, transform);
             } else {
                 flashlight.SetActive(false);
+                Instantiate(turnOffSound, transform);
             }
             isLightOff = !isLightOff;
         }
