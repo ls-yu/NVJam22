@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 167521640}
   - component: {fileID: 167521639}
   m_Layer: 2
-  m_Name: Urn
+  m_Name: urn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1316,7 +1316,7 @@ GameObject:
   - component: {fileID: 951819794}
   - component: {fileID: 951819793}
   m_Layer: 2
-  m_Name: DuckFeet
+  m_Name: feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1738,7 +1738,7 @@ GameObject:
   - component: {fileID: 1144060780}
   - component: {fileID: 1144060779}
   m_Layer: 2
-  m_Name: Feather
+  m_Name: feather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1916,7 +1916,7 @@ GameObject:
   - component: {fileID: 1188809804}
   - component: {fileID: 1188809803}
   m_Layer: 2
-  m_Name: Flower
+  m_Name: flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

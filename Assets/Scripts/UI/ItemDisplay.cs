@@ -5,11 +5,7 @@ using UnityEngine.UI;
 
 public class ItemDisplay : MonoBehaviour
 {
-    public Image[] itemImages; //order: feet, petal, feather, urn
-    bool feet;
-    bool flower;
-    bool feather;
-    bool urn;
+    public Image[] itemImages; 
 
     public void showItem(string item)
     {
@@ -37,8 +33,9 @@ public class ItemDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         feet = true;
-        petal = true;
+        flower = true;
         feather = true;
         urn = true;
 
@@ -46,6 +43,7 @@ public class ItemDisplay : MonoBehaviour
         {
             img.gameObject.SetActive(false);
         }
+        */
     }
 
     // Update is called once per frame
