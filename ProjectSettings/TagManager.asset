@@ -8,6 +8,8 @@ TagManager:
   - wall
   - light
   - fox
+  - GameOver
+  - GameManager
   layers:
   - Default
   - TransparentFX
