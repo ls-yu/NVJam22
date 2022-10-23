@@ -47,8 +47,9 @@ public class CutsceneManager : MonoBehaviour
             if(frame.audioClip != null){
                 audioSource.clip = frame.audioClip;
                 audioSource.Play();
+                yield return new WaitForSeconds(frame.audioClip.length);
             }
-            
+
             yield return new WaitForSeconds(frame.activeTime);
             yield return StartCoroutine(Fade(frame.obj.GetComponent<SpriteRenderer>()));
         }
