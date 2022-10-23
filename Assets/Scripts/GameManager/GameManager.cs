@@ -21,11 +21,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        gameOverFailUI = GameObject.FindGameObjectWithTag("GameOver");
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "GameScene"){
+            gameOverFailUI = GameObject.FindGameObjectWithTag("GameOver");
         goScript = gameOverFailUI.GetComponent<GameOver>();
         gameOverSuccessUI = GameObject.FindGameObjectWithTag("GameOverSuccess");
         gosScript = gameOverSuccessUI.GetComponent<GameOverSuccess>();
 
+        }
+        
         gameEnded = false;
 
         broadcastedGameFinish = false;   
