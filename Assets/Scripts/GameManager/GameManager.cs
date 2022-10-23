@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     GameObject gameOverSuccessUI;
     GameOverSuccess gosScript;
 
-    bool gameEnded;
+    public bool gameEnded;
 
     bool broadcastedGameFinish;
 
