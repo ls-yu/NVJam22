@@ -50,8 +50,12 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void GoToCredits(){
+    public void GoToControls(){
+        SceneManager.LoadSceneAsync("ControlsScene");
+    }
 
+    public void GoToCredits(){
+        SceneManager.LoadSceneAsync("CreditsScene");
     }
 
     IEnumerator GameWon(){
