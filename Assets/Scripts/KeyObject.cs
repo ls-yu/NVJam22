@@ -18,9 +18,10 @@ public class KeyObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.tag == "player"){
-            // TODO call setobjvisible(name)
-            
+            // TODO call setinventoryobjvisible(name)
+
         }
+        gameObject.SetActive(false);
     }    
 
 }
