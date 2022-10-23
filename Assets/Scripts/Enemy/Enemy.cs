@@ -22,6 +22,10 @@ public class Enemy : MonoBehaviour
     public float health = 2.0f;
     public float damagePerSecond = 1.0f;
 
+    //attack
+    public float attackCooldown = 1.5f;
+    public float attackTimer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,9 +85,9 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col){
         Debug.Log("collision");
-        if (col.gameObject.tag == "player" && isAwake){
-
-            //TODO GameManager::GameOver();
+        if (col.gameObject.tag == "player" && !isAwake){
+            attackTimer = attackCooldown;
+            player.GetComponent<PlayerHealth>().TakeDamage(1);
         }
         else if (col.gameObject.tag == "player" && !isAwake){
             WakeUp();
@@ -91,6 +95,15 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.tag == "wall"){
             direction *= -1.0f;
             Debug.Log(direction);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D col){
+        if (col.gameObject.tag == "player" && isAwake){
+            attackTimer-=Time.deltaTime;
+            if (attackTimer < 0.0f){
+                player.GetComponent<PlayerHealth>().TakeDamage(1);
+            }
         }
     }
 
