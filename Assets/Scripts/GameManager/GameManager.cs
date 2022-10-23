@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static KeyManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,25 +19,45 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (KeyManager.FoundAll())
+        if (SceneManager.GetActiveScene().name == "GameScene" && KeyManager.FoundAll())
         {
             //trying to broadcast the event once
             if (!broadcastedGameFinish)
             {
-                OnGameFinish();
+                Debug.Log("Game success");
                 broadcastedGameFinish = true;
+                StartCoroutine(GameWon());
             }
         }
     }
 
     public void GameReset()
     {
+        SceneManager.LoadSceneAsync("GameScene");
         Debug.Log("Reset");
     }
 
     public void GoToMenu()
     {
-        Debug.Log("Menu");
+        SceneManager.LoadSceneAsync("StartScreen");
+    }
+
+    public void IntroCutScenes(){
+
+    }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
+
+    public void GoToCredits(){
+
+    }
+
+    IEnumerator GameWon(){
+        yield return new WaitForSeconds(0.3f);
+        // TODO play success sound
+        SceneManager.LoadSceneAsync("GameOverSuccess");
     }
 
 }

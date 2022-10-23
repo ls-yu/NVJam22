@@ -17,13 +17,16 @@ public class Enemy : MonoBehaviour
 
     // for targeted movement toward player
     private bool nearPlayer = false;
+    public float runSpeed = 0.7f;
+    private bool touchingLight = false;
 
     // for taking damage
     public float health = 2.0f;
     public float damagePerSecond = 1.0f;
+    private bool takingDamage = false;
 
     //attack
-    public float attackCooldown = 1.5f;
+    public float attackCooldown = 0.5f;
     public float attackTimer = 0.0f;
 
     // Start is called before the first frame update
@@ -38,23 +41,18 @@ public class Enemy : MonoBehaviour
         if (isAwake){
             Move();
         }
-
-        //delete later, just debug purposes
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            WakeUp();
-        }
         
     }
 
     public void WakeUp(){
-        isAwake = true;
-        // TODO change the sprite/animation to awake
-        anim.WakeUpAnimation();
+        StartCoroutine(WakeSequence());
     }
 
     private void OnTriggerEnter2D(Collider2D other){
         Debug.Log("trigger");
+        if (other.tag == "light"){
+            touchingLight = true;
+        }
         if (other.tag == "light" && !isAwake){
             WakeUp();
         }
@@ -66,14 +64,20 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other){
         if (other.tag == "light" && other.GetComponent<LightScript>().angle <= lightThreshold){
+            if (!takingDamage){
+                takingDamage = true;
+                anim.TakeDamageAnimation();
+            }
             health -= Time.deltaTime * damagePerSecond;
             Debug.Log("taking damage");
             if (health <= 0.0f){
                 Debug.Log("death");
-                // TODO play death animation if applicable
                 anim.DeathAnimation();
                 StartCoroutine(DeathSequence());
             }
+        }
+        if (other.tag == "light" && other.GetComponent<LightScript>().angle > lightThreshold){
+            takingDamage = false;
         }
     }
 
@@ -82,17 +86,23 @@ public class Enemy : MonoBehaviour
             nearPlayer = false;
             Debug.Log("not near player");
         }
+        if (other.tag == "light"){
+            takingDamage = false;
+            touchingLight = false;
+            anim.WakeUpAnimation();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col){
         Debug.Log("collision");
-        if (col.gameObject.tag == "player" && !isAwake){
+        if (col.gameObject.tag == "player" && isAwake){
             attackTimer = attackCooldown;
+            anim.AttackAnimation();
         }
         else if (col.gameObject.tag == "player" && !isAwake){
             WakeUp();
         }
-        if (col.gameObject.tag == "wall"){
+        else if (col.gameObject.tag == "wall" || col.gameObject.tag == "fox"){
             direction *= -1.0f;
             Debug.Log(direction);
         }
@@ -105,17 +115,22 @@ public class Enemy : MonoBehaviour
             }
             attackTimer-=Time.deltaTime;
             if (attackTimer < 0.0f){
+                anim.AttackAnimation();
+                attackTimer = attackCooldown;
                 player.GetComponent<PlayerHealth>().TakeDamage(1);
             }
         }
     }
 
     private void Move(){
-        if (nearPlayer){
+        float speed;
+        if (nearPlayer || touchingLight){
             direction = Vector3.Normalize(player.transform.position - transform.position);
             direction.z = 0.0f;
+            speed = runSpeed;
         }
         else{
+            speed = moveSpeed;
             moveTimer-= Time.deltaTime;
             if (moveTimer <= 0f){
                 moveTimer = Random.Range(minMoveTime, maxMoveTime);
@@ -138,12 +153,18 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * 180 / Mathf.PI;
         transform.rotation = Quaternion.Euler(0, 0, angle - 180);
 
-        transform.position += Time.deltaTime * moveSpeed * direction;
+        transform.position += Time.deltaTime * speed * direction;
     }
 
     IEnumerator DeathSequence()
     {
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
+    }
+
+    IEnumerator WakeSequence(){
+        yield return new WaitForSeconds(0.8f);
+        isAwake = true;
+        anim.WakeUpAnimation();
     }
 }
