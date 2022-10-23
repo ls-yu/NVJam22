@@ -1811,6 +1811,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7643178314954272918, guid: ed81c94cb697af64fb226432f2998494, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1583889188}
+    - target: {fileID: 7643178314954272918, guid: ed81c94cb697af64fb226432f2998494, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GameReset
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643178316108577134, guid: ed81c94cb697af64fb226432f2998494, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1583889188}
+    - target: {fileID: 7643178316108577134, guid: ed81c94cb697af64fb226432f2998494, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed81c94cb697af64fb226432f2998494, type: 3}
 --- !u!1 &607782577
