@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
         }
         
         gameEnded = false;
+        gameOverFailUI.SetActive(false);
+        gameOverSuccessUI.SetActive(false);
 
         broadcastedGameFinish = false;   
     }
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
     {
         if (!gameEnded)
         {
+            gameOverSuccessUI.SetActive(true);
             gosScript.OnGameOver();
             gameEnded = true;
         }
@@ -89,6 +92,7 @@ public class GameManager : MonoBehaviour
     {
         if (!gameEnded)
         {
+            gameOverFailUI.SetActive(true);
             goScript.OnGameOver();
             gameEnded = true;
         }
