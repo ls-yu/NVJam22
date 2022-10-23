@@ -7,11 +7,11 @@ public class Enemy : MonoBehaviour
     public bool isAwake = false;
     public EnemyAnimation anim;
     public GameObject player;
-    public float moveSpeed;
-    public float lightThreshold;
+    public float moveSpeed = 0.5f;
+    public float lightThreshold = 25f;
     // controls the random movement
-    public float maxMoveTime;
-    public float minMoveTime;
+    public float maxMoveTime = 3f;
+    public float minMoveTime = 1f;
     private float moveTimer = 0.0f;
     private Vector3 direction;
 
@@ -21,6 +21,10 @@ public class Enemy : MonoBehaviour
     // for taking damage
     public float health = 2.0f;
     public float damagePerSecond = 1.0f;
+
+    //attack
+    public float attackCooldown = 1.5f;
+    public float attackTimer = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -63,11 +67,12 @@ public class Enemy : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other){
         if (other.tag == "light" && other.GetComponent<LightScript>().angle <= lightThreshold){
             health -= Time.deltaTime * damagePerSecond;
+            Debug.Log("taking damage");
             if (health <= 0.0f){
+                Debug.Log("death");
                 // TODO play death animation if applicable
                 anim.DeathAnimation();
                 StartCoroutine(DeathSequence());
-                Destroy(this);
             }
         }
     }
@@ -81,9 +86,8 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col){
         Debug.Log("collision");
-        if (col.gameObject.tag == "player" && isAwake){
-
-            //TODO GameManager::GameOver();
+        if (col.gameObject.tag == "player" && !isAwake){
+            attackTimer = attackCooldown;
         }
         else if (col.gameObject.tag == "player" && !isAwake){
             WakeUp();
@@ -91,6 +95,18 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.tag == "wall"){
             direction *= -1.0f;
             Debug.Log(direction);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D col){
+        if (col.gameObject.tag == "player" && isAwake){
+            if (attackTimer == attackCooldown){
+                player.GetComponent<PlayerHealth>().TakeDamage(1);
+            }
+            attackTimer-=Time.deltaTime;
+            if (attackTimer < 0.0f){
+                player.GetComponent<PlayerHealth>().TakeDamage(1);
+            }
         }
     }
 
@@ -127,6 +143,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator DeathSequence()
     {
-        yield return new WaitForSeconds(0.09f);
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 }
