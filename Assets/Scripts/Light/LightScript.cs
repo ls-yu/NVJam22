@@ -82,6 +82,7 @@ public class LightScript : MonoBehaviour
         
         // Generating points and triangles
         // Updating sprite
+        
         Texture2D spriteTexture = new Texture2D(SPRITE_TEXTURE_SIZE, SPRITE_TEXTURE_SIZE);
         Sprite sprite = makeSpriteFromHits(hitPoints, spriteTexture);
         spriteRenderer.sprite = sprite;
