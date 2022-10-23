@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public bool isAwake = false;
-    public Animator animator;
+    public EnemyAnimation anim;
     public GameObject player;
     public float moveSpeed;
     public float lightThreshold;
@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<EnemyAnimation>();
     }
 
     // Update is called once per frame
@@ -32,13 +33,20 @@ public class Enemy : MonoBehaviour
     {
         if (isAwake){
             Move();
-            
         }
+
+        //delete later, just debug purposes
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            WakeUp();
+        }
+        
     }
 
     public void WakeUp(){
         isAwake = true;
         // TODO change the sprite/animation to awake
+        anim.WakeUpAnimation();
     }
 
     private void OnTriggerEnter2D(Collider2D other){
@@ -57,6 +65,8 @@ public class Enemy : MonoBehaviour
             health -= Time.deltaTime * damagePerSecond;
             if (health <= 0.0f){
                 // TODO play death animation if applicable
+                anim.DeathAnimation();
+                StartCoroutine(DeathSequence());
                 Destroy(this);
             }
         }
@@ -109,8 +119,14 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        float angle = Mathf.Atan2(direction.y, direction.x) * 180 / Mathf.PI;
+        transform.rotation = Quaternion.Euler(0, 0, angle - 180);
+
         transform.position += Time.deltaTime * moveSpeed * direction;
     }
 
-    
+    IEnumerator DeathSequence()
+    {
+        yield return new WaitForSeconds(0.09f);
+    }
 }
