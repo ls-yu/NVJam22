@@ -275,19 +275,9 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7712322687933643711, guid: b3823e8c288ad9547b87f916c7b17629, type: 3}
-<<<<<<< HEAD
-      propertyPath: numOfRays
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 7712322687933643711, guid: b3823e8c288ad9547b87f916c7b17629, type: 3}
-      propertyPath: lightBounds
-      value: 
-      objectReference: {fileID: 1341002008}
-=======
       propertyPath: debugDrawRays
       value: 1
       objectReference: {fileID: 0}
->>>>>>> 9a51507d93f967206736752c579a85b44574d798
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3823e8c288ad9547b87f916c7b17629, type: 3}
 --- !u!1 &1289402482
