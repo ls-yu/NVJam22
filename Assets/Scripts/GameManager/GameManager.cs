@@ -10,10 +10,16 @@ public class GameManager : MonoBehaviour
 {
     public static event Action OnGameFinish;
 
+    [SerializeField]
+    GameObject gameOverFailUI;
+    GameOver goScript;
+
     bool broadcastedGameFinish;
 
     void Start()
     {
+        gameOverFailUI = GameObject.FindGameObjectWithTag("GameOver");
+        goScript = gameOverFailUI.GetComponent<GameOver>();
         broadcastedGameFinish = false;   
     }
 
@@ -64,4 +70,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync("GameOverSuccess");
     }
 
+    /*
+    public void GameWon()
+    {
+
+    }
+    */
+
+    public void GameLost()
+    {
+        goScript.OnGameOver();
+    }
 }

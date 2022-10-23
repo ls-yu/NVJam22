@@ -28,11 +28,6 @@ public class GameOver : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            OnGameOver();
-        }
-
         if (animationFinished)
         {
             retryButton.gameObject.SetActive(true);

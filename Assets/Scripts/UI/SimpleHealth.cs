@@ -10,7 +10,7 @@ public class SimpleHealth : MonoBehaviour
 
     void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth = GameObject.FindGameObjectWithTag("player").GetComponent<PlayerHealth>();
     }
 
     void Update()
